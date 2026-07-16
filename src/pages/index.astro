@@ -1,133 +1,100 @@
 ---
-// Sem do horní části (mezi tři pomlčky) se píše JavaScript, pokud je potřeba.
-// Pro teď to necháme prázdné.
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import TelemetryConsole from '../components/TelemetryConsole.astro';
+import MissionCard from '../components/MissionCard.astro';
+import Timeline from '../components/Timeline.astro';
+import Subsystems from '../components/Subsystems.astro';
+import Footer from '../components/Footer.astro';
+
+const cassiopeiaMilestones = [
+  { name: "Power board finished", status: "done" as const },
+  { name: "Sensor board finished", status: "done" as const },
+  { name: "Main OBC in development", status: "working" as const },
+  { name: "Ground testing", status: "working" as const },
+  { name: "Fuselage & recovery integration", status: "todo" as const }
+];
 ---
 
-<html lang="cs">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Mellotech | Student Rocket Development</title>
-		<style>
-			body {
-				background-color: #0b0f19;
-				color: #f3f4f6;
-				font-family: system-ui, -apple-system, sans-serif;
-				margin: 0;
-				padding: 0;
-				display: flex;
-				flex-direction: column;
-				align-items: center;
-				min-height: 100vh;
-			}
-			main {
-				max-width: 800px;
-				width: 100%;
-				padding: 2rem 1rem;
-				box-sizing: border-box;
-			}
-			header {
-				text-align: center;
-				margin-bottom: 3rem;
-			}
-			h1 {
-				font-size: 3rem;
-				letter-spacing: 0.1em;
-				margin: 0;
-				color: #3b82f6;
-			}
-			.subtitle {
-				font-size: 1.2rem;
-				color: #9ca3af;
-				margin-top: 0.5rem;
-			}
-			.tagline {
-				font-style: italic;
-				margin: 1.5rem 0;
-				color: #60a5fa;
-			}
-			.section {
-				background-color: #111827;
-				border: 1px solid #1f2937;
-				border-radius: 8px;
-				padding: 1.5rem;
-				margin-bottom: 2rem;
-			}
-			h2 {
-				margin-top: 0;
-				border-bottom: 2px solid #1f2937;
-				padding-bottom: 0.5rem;
-				color: #f3f4f6;
-			}
-			.progress-bar {
-				background-color: #374151;
-				border-radius: 4px;
-				overflow: hidden;
-				margin: 1rem 0;
-			}
-			.progress-fill {
-				background-color: #10b981;
-				height: 20px;
-				width: 35%;
-				text-align: center;
-				font-size: 12px;
-				line-height: 20px;
-				color: white;
-				font-weight: bold;
-			}
-			ul {
-				list-style-type: none;
-				padding: 0;
-			}
-			li {
-				padding: 0.5rem 0;
-				border-bottom: 1px solid #1f2937;
-			}
-			li:last-child {
-				border-bottom: none;
-			}
-			.status-done { color: #10b981; }
-			.status-working { color: #f59e0b; }
-		</style>
-	</head>
-	<body>
-		<main>
-			<header>
-				<h1>MELLOTECH</h1>
-				<p class="subtitle">Student Rocket Development Team</p>
-				<p class="tagline">Building reusable knowledge. Designing flight computers. Flying rockets.</p>
-			</header>
+<Layout>
+  <!-- Header Section -->
+  <Header />
 
-			<section class="section">
-				<h2>Missions</h2>
-				<h3>🚀 Cassiopeia I</h3>
-				<p>Status: Active Development</p>
-				<div class="progress-bar">
-					<div class="progress-fill">35%</div>
-				</div>
-			</section>
+  <!-- Live Telemetry Stream -->
+  <TelemetryConsole />
 
-			<section class="section">
-				<h2>Latest News</h2>
-				<ul>
-					<li><span class="status-done">✔</span> Power board finished</li>
-					<li><span class="status-done">✔</span> Sensor board finished</li>
-					<li><span class="status-working">🔄</span> Main OBC in development</li>
-					<li><span class="status-working">🔄</span> Ground testing</li>
-				</ul>
-			</section>
+  <!-- Main Content Grid -->
+  <main class="content-grid">
+    <div class="primary-column">
+      <!-- Active Missions -->
+      <section class="section-wrapper">
+        <div class="column-header font-mono">ACTIVE PROJECTS</div>
+        <MissionCard 
+          name="Cassiopeia I"
+          status="Active Development"
+          progress={35}
+          targetApogee="2500 m"
+          launchSite="Třebíč, Czech Republic"
+          milestones={cassiopeiaMilestones}
+        />
+      </section>
 
-			<section class="section">
-				<h2>Subsystems</h2>
-				<p>Software • Hardware • Propulsion • Simulation • Recovery</p>
-			</section>
+      <!-- Technical Subsystems -->
+      <section class="section-wrapper">
+        <Subsystems />
+      </section>
+    </div>
 
-			<section class="section">
-				<h2>Sponsors</h2>
-				<p style="color: #9ca3af; font-style: italic;">Looking for partners...</p>
-			</section>
-		</main>
-	</body>
-</html>
+    <div class="secondary-column">
+      <!-- Logs & Updates -->
+      <Timeline />
+    </div>
+  </main>
+
+  <!-- Footer Section -->
+  <Footer />
+</Layout>
+
+<style>
+  .content-grid {
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .primary-column {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .secondary-column {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .section-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .column-header {
+    font-size: 0.7rem;
+    color: var(--color-text-muted);
+    letter-spacing: 0.1em;
+    font-weight: 600;
+  }
+
+  .font-mono {
+    font-family: 'Space Grotesk', monospace;
+  }
+
+  @media (max-width: 820px) {
+    .content-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
