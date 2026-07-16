@@ -13,20 +13,39 @@ import Layout from '../layouts/Layout.astro';
         <p class="join-lead">
           Interested in electronics, programming or space?
         </p>
-        <p class="join-cta">We'd love to have you on the team.</p>
+        <p class="join-cta">Fill in the form and we'll get back to you.</p>
       </div>
 
-      <div class="join-discord">
-        <span class="discord-label font-mono">DISCORD</span>
-        <a href="https://discord.gg/NTPgKwrTaH" target="_blank" rel="noopener noreferrer" class="discord-button">
-          <span class="discord-button-text">JOIN DISCORD</span>
-        </a>
-        <div class="discord-code">NTPgKwrTaH</div>
-        <p class="discord-hint font-mono">Click the button or copy the code above</p>
+      <form id="join-form" class="join-form" onsubmit="return handleSubmit(event)">
+        <div class="form-group">
+          <label class="form-label font-mono" for="name">NAME</label>
+          <input type="text" id="name" name="name" class="form-input" placeholder="Your name" required />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label font-mono" for="email">EMAIL</label>
+          <input type="email" id="email" name="email" class="form-input" placeholder="your@email.com" required />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label font-mono" for="message">MESSAGE</label>
+          <textarea id="message" name="message" class="form-input form-textarea" placeholder="Tell us about yourself — what interests you, what skills you have..." rows="4" required></textarea>
+        </div>
+
+        <button type="submit" class="form-submit font-mono">
+          <span class="submit-text">SEND</span>
+          <span class="submit-arrow">→</span>
+        </button>
+      </form>
+
+      <div id="form-success" class="form-success" style="display:none">
+        <span class="success-icon">✓</span>
+        <p class="success-text">Thanks for reaching out!</p>
+        <p class="success-hint font-mono">We'll get back to you as soon as possible.</p>
       </div>
 
-      <div class="join-contacts">
-        <span class="contacts-label font-mono">CONTACT</span>
+      <div class="join-contact-info">
+        <span class="contacts-label font-mono">OR CONTACT US DIRECTLY</span>
 
         <div class="contact-item">
           <span class="contact-role font-mono">MAIN LEADER</span>
@@ -42,11 +61,31 @@ import Layout from '../layouts/Layout.astro';
       </div>
 
       <div class="join-footer font-mono">
-        Have questions? Reach out anytime.
+        Also find us on Discord: NTPgKwrTaH
       </div>
     </div>
   </main>
 </Layout>
+
+<script>
+  function handleSubmit(event) {
+    event.preventDefault();
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const message = document.getElementById('message').value;
+
+    const subject = encodeURIComponent('New Mellotech Member Interest');
+    const body = encodeURIComponent(
+      `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`
+    );
+
+    document.getElementById('join-form').style.display = 'none';
+    document.getElementById('form-success').style.display = 'flex';
+
+    window.location.href = `mailto:bedrich.brezina09@gmail.com;simonbalog11@seznam.cz?subject=${subject}&body=${body}`;
+    return false;
+  }
+</script>
 
 <style>
   .join-page {
@@ -116,64 +155,118 @@ import Layout from '../layouts/Layout.astro';
     font-weight: 600;
   }
 
-  .join-discord {
-    background: rgba(88, 101, 242, 0.08);
-    border: 1px solid rgba(88, 101, 242, 0.25);
-    border-radius: 8px;
-    padding: 1.25rem;
+  .join-form {
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 1.25rem;
   }
 
-  .discord-label {
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .form-label {
     font-size: 0.65rem;
-    color: #8b9cf7;
+    color: var(--accent-cyan);
     font-weight: 600;
     letter-spacing: 0.08em;
   }
 
-  .discord-button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0.8rem 1.5rem;
-    background: #5865f2;
-    border: none;
+  .form-input {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 0.9rem;
+    padding: 0.7rem 0.85rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 6px;
-    text-decoration: none;
-    transition: all 0.2s ease;
-  }
-
-  .discord-button:hover {
-    background: #4752c4;
-    box-shadow: 0 0 20px rgba(88, 101, 242, 0.3);
-    transform: translateY(-1px);
-  }
-
-  .discord-button-text {
-    font-family: 'Space Grotesk', monospace;
-    font-size: 0.85rem;
-    font-weight: 700;
     color: #ffffff;
-    letter-spacing: 0.08em;
+    outline: none;
+    transition: border-color 0.2s ease;
   }
 
-  .discord-code {
-    font-family: 'Space Grotesk', monospace;
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: #ffffff;
-    letter-spacing: 0.15em;
-    user-select: all;
-  }
-
-  .discord-hint {
-    font-size: 0.7rem;
+  .form-input::placeholder {
     color: var(--color-text-muted);
   }
 
-  .join-contacts {
+  .form-input:focus {
+    border-color: var(--accent-cyan);
+    box-shadow: 0 0 10px rgba(6, 182, 212, 0.1);
+  }
+
+  .form-textarea {
+    resize: vertical;
+    min-height: 100px;
+    line-height: 1.5;
+  }
+
+  .form-submit {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.8rem 1.5rem;
+    background: rgba(6, 182, 212, 0.1);
+    border: 1px solid rgba(6, 182, 212, 0.3);
+    border-radius: 6px;
+    color: var(--accent-cyan);
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .form-submit:hover {
+    background: rgba(6, 182, 212, 0.2);
+    border-color: var(--accent-cyan);
+    box-shadow: 0 0 15px rgba(6, 182, 212, 0.15);
+  }
+
+  .submit-arrow {
+    transition: transform 0.2s ease;
+  }
+
+  .form-submit:hover .submit-arrow {
+    transform: translateX(4px);
+  }
+
+  .form-success {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1.5rem;
+    background: rgba(16, 185, 129, 0.08);
+    border: 1px solid rgba(16, 185, 129, 0.25);
+    border-radius: 8px;
+    text-align: center;
+  }
+
+  .success-icon {
+    font-size: 2rem;
+    color: var(--accent-emerald);
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(16, 185, 129, 0.1);
+    border-radius: 50%;
+  }
+
+  .success-text {
+    font-size: 1.1rem;
+    color: #ffffff;
+    font-weight: 600;
+  }
+
+  .success-hint {
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+  }
+
+  .join-contact-info {
     display: flex;
     flex-direction: column;
     gap: 1rem;
