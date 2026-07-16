@@ -1,6 +1,7 @@
 ---
 interface Subsystem {
   id: string;
+  code: string;
   name: string;
   shortDesc: string;
   longDesc: string;
@@ -10,6 +11,7 @@ interface Subsystem {
 const subsystems: Subsystem[] = [
   {
     id: "software",
+    code: "SOF",
     name: "Flight Software",
     shortDesc: "Real-time firmware & telemetry",
     longDesc: "Developing RTOS-based flight firmware, Kalman filtering for state estimation, and telemetry transmission protocols.",
@@ -17,13 +19,23 @@ const subsystems: Subsystem[] = [
   },
   {
     id: "hardware",
+    code: "HAR",
     name: "Avionics & PCB",
     shortDesc: "Custom electronics design",
     longDesc: "Designing custom multi-layer PCBs for flight computers, sensor boards, telemetry radios, and battery management systems.",
     techStack: ["KiCad", "STM32", "Altium"]
   },
   {
+    id: "structures",
+    code: "STR",
+    name: "Structures & Airframe",
+    shortDesc: "Rocket body & integration",
+    longDesc: "Engineering the rocket's body, fin geometry, and avionics bay — material selection, structural load analysis, and integrating internal subsystems into a flight-ready airframe.",
+    techStack: ["CAD", "FEA", "Composites"]
+  },
+  {
     id: "propulsion",
+    code: "PRO",
     name: "Propulsion",
     shortDesc: "Solid motor development",
     longDesc: "Designing solid rocket motors, calculating fuel grain geometries, and testing on custom-made static test stands.",
@@ -31,6 +43,7 @@ const subsystems: Subsystem[] = [
   },
   {
     id: "simulation",
+    code: "SIM",
     name: "Simulation & Aero",
     shortDesc: "Flight path optimization",
     longDesc: "Simulating rocket trajectories, performing CFD aerodynamic simulations, and optimizing weight-to-thrust ratios.",
@@ -38,10 +51,11 @@ const subsystems: Subsystem[] = [
   },
   {
     id: "recovery",
+    code: "REC",
     name: "Recovery Systems",
     shortDesc: "Dual-deployment recovery",
-    longDesc: "Engineering parachute deployment ejection charges, dual-deployment altimeter triggers, and shock cord sizing.",
-    techStack: ["Dual Deploy", "CO2 Ejection"]
+    longDesc: "Designing servo-driven parachute deployment mechanisms, dual-deployment altimeter triggers, and shock cord sizing.",
+    techStack: ["Dual Deploy", "Servo Trigger", "Altimeters"]
   }
 ];
 ---
@@ -56,7 +70,7 @@ const subsystems: Subsystem[] = [
     {subsystems.map((s) => (
       <div class="subsystem-card glass-panel">
         <div class="card-glow"></div>
-        <div class="sub-icon font-mono">[{s.id.substring(0, 3).toUpperCase()}]</div>
+        <div class="sub-icon font-mono">[{s.code}]</div>
         <h4 class="sub-card-title">{s.name}</h4>
         <p class="sub-card-desc">{s.longDesc}</p>
         <div class="tech-tags font-mono">
