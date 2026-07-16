@@ -1,0 +1,165 @@
+---
+interface Subsystem {
+  id: string;
+  code: string;
+  name: string;
+  shortDesc: string;
+  longDesc: string;
+  techStack: string[];
+}
+
+const subsystems: Subsystem[] = [
+  {
+    id: "software",
+    code: "SOF",
+    name: "Flight Software",
+    shortDesc: "Real-time firmware & telemetry",
+    longDesc: "Developing RTOS-based flight firmware, Kalman filtering for state estimation, and telemetry transmission protocols.",
+    techStack: ["C/C++", "FreeRTOS", "Python"]
+  },
+  {
+    id: "hardware",
+    code: "HAR",
+    name: "Avionics & PCB",
+    shortDesc: "Custom electronics design",
+    longDesc: "Designing custom multi-layer PCBs for flight computers, sensor boards, telemetry radios, and battery management systems.",
+    techStack: ["KiCad", "STM32", "Altium"]
+  },
+  {
+    id: "structures",
+    code: "STR",
+    name: "Structures & Airframe",
+    shortDesc: "Rocket body & integration",
+    longDesc: "Engineering the rocket's body, fin geometry, and avionics bay — material selection, structural load analysis, and integrating internal subsystems into a flight-ready airframe.",
+    techStack: ["CAD", "FEA", "Composites"]
+  },
+  {
+    id: "propulsion",
+    code: "PRO",
+    name: "Propulsion",
+    shortDesc: "Solid motor development",
+    longDesc: "Designing solid rocket motors, calculating fuel grain geometries, and testing on custom-made static test stands.",
+    techStack: ["OpenMotor", "SolidWorks"]
+  },
+  {
+    id: "simulation",
+    code: "SIM",
+    name: "Simulation & Aero",
+    shortDesc: "Flight path optimization",
+    longDesc: "Simulating rocket trajectories, performing CFD aerodynamic simulations, and optimizing weight-to-thrust ratios.",
+    techStack: ["OpenRocket", "ANSYS", "MATLAB"]
+  },
+  {
+    id: "recovery",
+    code: "REC",
+    name: "Recovery Systems",
+    shortDesc: "Dual-deployment recovery",
+    longDesc: "Designing servo-driven parachute deployment mechanisms, dual-deployment altimeter triggers, and shock cord sizing.",
+    techStack: ["Dual Deploy", "Servo Trigger", "Altimeters"]
+  }
+];
+---
+
+<div class="subsystems-container">
+  <div class="section-header">
+    <span class="sub-tag font-mono">ORGANIZATION STRUCTURE</span>
+    <h3 class="sub-title text-glow-cyan">Technical Subsystems</h3>
+  </div>
+
+  <div class="subsystems-grid">
+    {subsystems.map((s) => (
+      <div class="subsystem-card glass-panel">
+        <div class="card-glow"></div>
+        <div class="sub-icon font-mono">[{s.code}]</div>
+        <h4 class="sub-card-title">{s.name}</h4>
+        <p class="sub-card-desc">{s.longDesc}</p>
+        <div class="tech-tags font-mono">
+          {s.techStack.map((tech) => (
+            <span class="tech-tag">{tech}</span>
+          ))}
+        </div>
+      </div>
+    ))}
+  </div>
+</div>
+
+<style>
+  .subsystems-container {
+    margin-bottom: 2rem;
+  }
+
+  .section-header {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .sub-tag {
+    font-size: 0.65rem;
+    color: var(--accent-cyan);
+    font-weight: 600;
+  }
+
+  .sub-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #ffffff;
+  }
+
+  .subsystems-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1rem;
+  }
+
+  .subsystem-card {
+    padding: 1.5rem;
+    background: rgba(11, 15, 25, 0.7);
+    border-color: rgba(59, 130, 246, 0.2);
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .subsystem-card:hover {
+    border-color: var(--accent-cyan);
+  }
+
+  .sub-icon {
+    font-size: 0.75rem;
+    color: var(--accent-cyan);
+    font-weight: 600;
+  }
+
+  .sub-card-title {
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: #ffffff;
+  }
+
+  .sub-card-desc {
+    font-size: 0.85rem;
+    color: var(--color-text-secondary);
+    line-height: 1.4;
+    flex-grow: 1;
+  }
+
+  .tech-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: 0.5rem;
+  }
+
+  .tech-tag {
+    font-size: 0.65rem;
+    background: rgba(6, 182, 212, 0.08);
+    border: 1px solid rgba(6, 182, 212, 0.2);
+    color: var(--accent-cyan);
+    padding: 0.15rem 0.4rem;
+    border-radius: 4px;
+  }
+</style>

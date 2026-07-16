@@ -1,0 +1,331 @@
+---
+---
+
+<div class="telemetry-console glass-panel">
+  <div class="console-header">
+    <div class="console-title font-mono">
+      <span class="pulse-dot"></span>
+      LIVE TELEMETRY STREAM [OBC_LINK_ESTABLISHED]
+    </div>
+    <div class="console-time font-mono" id="telemetry-time">12:34:56.789</div>
+  </div>
+
+  <div class="console-grid">
+    <!-- Stat Item -->
+    <div class="stat-card">
+      <div class="stat-label font-mono">SYS_UPTIME</div>
+      <div class="stat-value font-mono" id="val-uptime">00:00:00</div>
+    </div>
+    
+    <!-- Stat Item -->
+    <div class="stat-card">
+      <div class="stat-label font-mono">ALTITUDE</div>
+      <div class="stat-value font-mono text-cyan" id="val-alt">0.00 <span class="unit">m</span></div>
+    </div>
+
+    <!-- Stat Item -->
+    <div class="stat-card">
+      <div class="stat-label font-mono">CHAMBER_PRESS</div>
+      <div class="stat-value font-mono" id="val-press">1.013 <span class="unit">bar</span></div>
+    </div>
+
+    <!-- Stat Item -->
+    <div class="stat-card">
+      <div class="stat-label font-mono">OBC_TEMP</div>
+      <div class="stat-value font-mono" id="val-temp">24.2 <span class="unit">°C</span></div>
+    </div>
+
+    <!-- Stat Item -->
+    <div class="stat-card">
+      <div class="stat-label font-mono">BATT_VOLTAGE</div>
+      <div class="stat-value font-mono text-orange" id="val-batt">8.24 <span class="unit">V</span></div>
+    </div>
+
+    <!-- Stat Item -->
+    <div class="stat-card">
+      <div class="stat-label font-mono">RSSI_SIGNAL</div>
+      <div class="stat-value font-mono" id="val-rssi">98 <span class="unit">%</span></div>
+    </div>
+  </div>
+
+  <div class="console-footer">
+    <div class="gyro-panel">
+      <div class="panel-label font-mono">IMU_ATTITUDE</div>
+      <div class="gyro-values font-mono">
+        <div>R: <span id="val-roll" class="text-white">0.02°</span></div>
+        <div>P: <span id="val-pitch" class="text-white">-0.05°</span></div>
+        <div>Y: <span id="val-yaw" class="text-white">0.12°</span></div>
+      </div>
+    </div>
+
+    <div class="log-panel">
+      <div class="panel-label font-mono">SYSTEM_LOGS</div>
+      <div class="log-stream font-mono" id="log-stream">
+        <div>[SYSTEM] OBC Init OK.</div>
+        <div>[SENSOR] IMU calibration complete.</div>
+        <div>[TELEMETRY] Connection established.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .telemetry-console {
+    padding: 1.25rem;
+    margin-bottom: 2rem;
+    background: rgba(8, 12, 24, 0.85);
+    border-color: rgba(6, 182, 212, 0.2);
+    box-shadow: 0 0 20px rgba(6, 182, 212, 0.05);
+  }
+
+  .telemetry-console:hover {
+    border-color: rgba(6, 182, 212, 0.4);
+    box-shadow: 0 0 25px rgba(6, 182, 212, 0.1);
+  }
+
+  .font-mono {
+    font-family: 'Space Grotesk', monospace;
+  }
+
+  .console-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding-bottom: 0.75rem;
+    margin-bottom: 1rem;
+  }
+
+  .console-title {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--accent-cyan);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    letter-spacing: 0.05em;
+  }
+
+  .pulse-dot {
+    width: 6px;
+    height: 6px;
+    background: var(--accent-cyan);
+    border-radius: 50%;
+    box-shadow: 0 0 8px var(--accent-cyan);
+    animation: pulse-slow 1.5s infinite ease-in-out;
+  }
+
+  .console-time {
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+  }
+
+  .console-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+  }
+
+  @media (max-width: 900px) {
+    .console-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  @media (max-width: 480px) {
+    .console-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  .stat-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 6px;
+    padding: 0.6rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .stat-label {
+    font-size: 0.65rem;
+    color: var(--color-text-muted);
+    font-weight: 500;
+  }
+
+  .stat-value {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--color-text-primary);
+  }
+
+  .stat-value .unit {
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+    font-weight: 400;
+  }
+
+  .text-cyan {
+    color: var(--accent-cyan);
+  }
+
+  .text-orange {
+    color: var(--accent-orange);
+  }
+
+  .text-white {
+    color: #ffffff;
+  }
+
+  .console-footer {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding-top: 1rem;
+  }
+
+  @media (max-width: 640px) {
+    .console-footer {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .gyro-panel, .log-panel {
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    border-radius: 6px;
+    padding: 0.75rem;
+  }
+
+  .panel-label {
+    font-size: 0.65rem;
+    color: var(--color-text-muted);
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+  }
+
+  .gyro-values {
+    display: flex;
+    gap: 1rem;
+    font-size: 0.85rem;
+    color: var(--color-text-secondary);
+  }
+
+  .log-stream {
+    font-size: 0.75rem;
+    color: var(--accent-cyan);
+    opacity: 0.8;
+    height: 60px;
+    overflow-y: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+
+  .log-stream div {
+    font-family: monospace;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+</style>
+
+<script>
+  // Simple simulation logic
+  const startTime = Date.now();
+  
+  function updateTime() {
+    const now = new Date();
+    const ms = String(now.getMilliseconds()).padStart(3, '0');
+    const timeStr = `${now.toTimeString().split(' ')[0]}.${ms}`;
+    const timeEl = document.getElementById('telemetry-time');
+    if (timeEl) timeEl.textContent = timeStr;
+  }
+
+  function updateUptime() {
+    const elapsedMs = Date.now() - startTime;
+    const s = Math.floor(elapsedMs / 1000) % 60;
+    const m = Math.floor(elapsedMs / 60000) % 60;
+    const h = Math.floor(elapsedMs / 3600000);
+    
+    const uptimeStr = `${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
+    const uptimeEl = document.getElementById('val-uptime');
+    if (uptimeEl) uptimeEl.textContent = uptimeStr;
+  }
+
+  // Generate slightly fluctuating values
+  function updateStats() {
+    // Altitude: slight oscillation at 0
+    const alt = (Math.random() * 0.04 - 0.02).toFixed(2);
+    const altEl = document.getElementById('val-alt');
+    if (altEl) altEl.innerHTML = `${alt} <span class="unit">m</span>`;
+
+    // Chamber pressure
+    const press = (1.013 + (Math.random() * 0.004 - 0.002)).toFixed(3);
+    const pressEl = document.getElementById('val-press');
+    if (pressEl) pressEl.innerHTML = `${press} <span class="unit">bar</span>`;
+
+    // OBC Temp
+    const temp = (24.2 + (Math.random() * 0.3 - 0.15)).toFixed(1);
+    const tempEl = document.getElementById('val-temp');
+    if (tempEl) tempEl.innerHTML = `${temp} <span class="unit">°C</span>`;
+
+    // Battery
+    const batt = (8.24 + (Math.random() * 0.02 - 0.01)).toFixed(2);
+    const battEl = document.getElementById('val-batt');
+    if (battEl) battEl.innerHTML = `${batt} <span class="unit">V</span>`;
+
+    // RSSI
+    const rssi = Math.floor(97 + Math.random() * 3);
+    const rssiEl = document.getElementById('val-rssi');
+    if (rssiEl) rssiEl.innerHTML = `${rssi} <span class="unit">%</span>`;
+
+    // Gyro
+    const roll = (Math.random() * 0.1 - 0.05).toFixed(2);
+    const pitch = (-0.05 + (Math.random() * 0.08 - 0.04)).toFixed(2);
+    const yaw = (0.12 + (Math.random() * 0.12 - 0.06)).toFixed(2);
+
+    const rollEl = document.getElementById('val-roll');
+    const pitchEl = document.getElementById('val-pitch');
+    const yawEl = document.getElementById('val-yaw');
+
+    if (rollEl) rollEl.textContent = `${roll}°`;
+    if (pitchEl) pitchEl.textContent = `${pitch}°`;
+    if (yawEl) yawEl.textContent = `${yaw}°`;
+  }
+
+  // Periodic log adding
+  const logStream = document.getElementById('log-stream');
+  const systemLogs = [
+    "[TELEMETRY] Heartbeat sent.",
+    "[BATTERY] Voltage stable at 8.2V.",
+    "[SENSOR] GPS fix: 12 satellites.",
+    "[IMU] Data stream normal.",
+    "[SYSTEM] Memory consumption: 41.2KB / 256KB.",
+    "[BARO] Altitude check complete."
+  ];
+
+  function addLog() {
+    if (!logStream) return;
+    const randomLog = systemLogs[Math.floor(Math.random() * systemLogs.length)];
+    const logTime = new Date().toTimeString().split(' ')[0];
+    
+    const logItem = document.createElement('div');
+    logItem.textContent = `[${logTime}] ${randomLog}`;
+    
+    logStream.appendChild(logItem);
+    if (logStream.children.length > 3) {
+      logStream.removeChild(logStream.firstChild!);
+    }
+  }
+
+  // Initialize intervals
+  setInterval(updateTime, 100);
+  setInterval(updateUptime, 1000);
+  setInterval(updateStats, 500);
+  setInterval(addLog, 4000);
+</script>
