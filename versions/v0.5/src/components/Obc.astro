@@ -1,0 +1,182 @@
+---
+const features = [
+  { label: "MCU", value: "STM32H743 — 480 MHz ARM Cortex-M7" },
+  { label: "State Est.", value: "Barometric altitude + 9-axis IMU fusion" },
+  { label: "Guidance", value: "Servo-actuated airbrakes for active apogee control" },
+  { label: "Telemetry", value: "Live downlink over LoRa" },
+  { label: "Logging", value: "High-rate flight data to onboard storage" },
+  { label: "PCB", value: "Full in-house schematic to layout design" },
+];
+
+const techTags = ["STM32H7", "Custom PCB", "Active Guidance", "LoRa Telemetry", "FreeRTOS"];
+---
+
+<div class="obc-container glass-panel">
+  <div class="obc-glow-bar"></div>
+
+  <div class="obc-header">
+    <span class="obc-tag font-mono">AVIONICS DEEP DIVE</span>
+    <h3 class="obc-title">Onboard Computer</h3>
+    <p class="obc-lead">
+      Our flight computer is built around the <strong>STM32H743</strong> — a 480 MHz ARM Cortex-M7
+      microcontroller, several times more powerful than what most student teams fly. Every board
+      is designed in-house, from schematic to layout.
+    </p>
+  </div>
+
+  <ul class="obc-features font-mono">
+    {features.map((f) => (
+      <li class="obc-feature-item">
+        <span class="feature-label">{f.label}</span>
+        <span class="feature-value">{f.value}</span>
+      </li>
+    ))}
+  </ul>
+
+  <div class="obc-tags font-mono">
+    {techTags.map((t) => (
+      <span class="obc-tech-tag">{t}</span>
+    ))}
+  </div>
+
+  <a href="obc" class="obc-deep-link font-mono">
+    <span>DEEP DIVE →</span>
+  </a>
+</div>
+
+<style>
+  .obc-container {
+    padding: 1.5rem;
+    background: rgba(8, 12, 24, 0.8);
+    border-color: rgba(139, 92, 246, 0.25);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .obc-container:hover {
+    border-color: rgba(139, 92, 246, 0.5);
+    box-shadow: 0 8px 32px 0 rgba(139, 92, 246, 0.1);
+  }
+
+  /* Purple accent top bar */
+  .obc-glow-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(to right, transparent, #8b5cf6, #06b6d4, transparent);
+  }
+
+  /* Background grid decoration */
+  .obc-container::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 200px;
+    height: 200px;
+    background-image:
+      linear-gradient(to right, rgba(139, 92, 246, 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(139, 92, 246, 0.05) 1px, transparent 1px);
+    background-size: 15px 15px;
+    mask-image: linear-gradient(to top-left, rgba(0,0,0,1) 30%, rgba(0,0,0,0) 100%);
+    -webkit-mask-image: linear-gradient(to top-left, rgba(0,0,0,1) 30%, rgba(0,0,0,0) 100%);
+    pointer-events: none;
+  }
+
+  .obc-header {
+    margin-bottom: 1.25rem;
+  }
+
+  .obc-tag {
+    font-size: 0.65rem;
+    color: #a78bfa;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+  }
+
+  .obc-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0.25rem 0 0.75rem 0;
+  }
+
+  .obc-lead {
+    font-size: 0.85rem;
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+  }
+
+  .obc-lead strong {
+    color: #ffffff;
+    font-weight: 600;
+  }
+
+  .obc-features {
+    list-style: none;
+    border: 1px solid rgba(139, 92, 246, 0.15);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 1.25rem;
+  }
+
+  .obc-feature-item {
+    display: flex;
+    gap: 1rem;
+    padding: 0.6rem 0.85rem;
+    border-bottom: 1px solid rgba(139, 92, 246, 0.08);
+    font-size: 0.78rem;
+    transition: background 0.15s ease;
+  }
+
+  .obc-feature-item:last-child {
+    border-bottom: none;
+  }
+
+  .obc-feature-item:hover {
+    background: rgba(139, 92, 246, 0.05);
+  }
+
+  .feature-label {
+    color: #a78bfa;
+    font-weight: 600;
+    min-width: 80px;
+    flex-shrink: 0;
+  }
+
+  .feature-value {
+    color: var(--color-text-primary);
+  }
+
+  .obc-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .obc-tech-tag {
+    font-size: 0.65rem;
+    background: rgba(139, 92, 246, 0.1);
+    border: 1px solid rgba(139, 92, 246, 0.25);
+    color: #a78bfa;
+    padding: 0.15rem 0.45rem;
+    border-radius: 4px;
+  }
+
+  .obc-deep-link {
+    display: inline-flex;
+    margin-top: 1rem;
+    font-size: 0.75rem;
+    color: #a78bfa;
+    text-decoration: none;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    transition: color 0.2s ease;
+  }
+
+  .obc-deep-link:hover {
+    color: #c4b5fd;
+  }
+</style>

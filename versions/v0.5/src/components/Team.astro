@@ -1,0 +1,181 @@
+---
+interface Member {
+  name: string;
+  role: string;
+  description: string;
+}
+
+const members: Member[] = [
+  {
+    name: "Bedřich Březina",
+    role: "Lead — Avionics & Systems",
+    description: "Overall system architecture, power electronics, flight computer design, and team coordination."
+  },
+  {
+    name: "Šimon Balog",
+    role: "Software & Telemetry",
+    description: "Flight firmware, Kalman filtering, ground station software, and web development."
+  }
+];
+
+const teamSize = members.length;
+---
+
+<div class="team-container glass-panel">
+  <div class="team-header">
+    <span class="team-tag font-mono">TEAM</span>
+    <h2 class="team-title">Behind Mellotech</h2>
+    <p class="team-subtitle">
+      We're a growing team of <strong>{teamSize}+</strong> students passionate about
+      aerospace engineering, avionics, and building things that fly. Independent,
+      self-organized, and focused on long-term engineering value over short-term results.
+    </p>
+  </div>
+
+  <div class="team-grid">
+    {members.map((m) => (
+      <div class="team-member">
+        <div class="member-avatar">
+          <span class="member-initials">{m.name.split(" ").map(n => n[0]).join("")}</span>
+        </div>
+        <div class="member-info">
+          <span class="member-name">{m.name}</span>
+          <span class="member-role font-mono">{m.role}</span>
+          <p class="member-desc">{m.description}</p>
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <div class="team-footer font-mono">
+    Want to join them? <a href="join" class="team-link">Get involved →</a>
+  </div>
+</div>
+
+<style>
+  .team-container {
+    padding: 1.5rem;
+    background: rgba(11, 15, 25, 0.7);
+    border-color: rgba(59, 130, 246, 0.2);
+  }
+
+  .team-header {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .team-tag {
+    font-size: 0.65rem;
+    color: var(--accent-cyan);
+    font-weight: 600;
+    letter-spacing: 0.08em;
+  }
+
+  .team-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #ffffff;
+  }
+
+  .team-subtitle {
+    font-size: 0.85rem;
+    color: var(--color-text-secondary);
+    line-height: 1.5;
+    margin-top: 0.25rem;
+  }
+
+  .team-subtitle strong {
+    color: #ffffff;
+  }
+
+  .team-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .team-member {
+    display: flex;
+    gap: 1rem;
+    padding: 0.85rem;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    transition: border-color 0.2s ease;
+  }
+
+  .team-member:hover {
+    border-color: rgba(6, 182, 212, 0.2);
+  }
+
+  .member-avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(6, 182, 212, 0.1);
+    border: 1px solid rgba(6, 182, 212, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .member-initials {
+    font-family: 'Space Grotesk', monospace;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--accent-cyan);
+  }
+
+  .member-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    flex: 1;
+  }
+
+  .member-name {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #ffffff;
+  }
+
+  .member-role {
+    font-size: 0.65rem;
+    color: var(--accent-cyan);
+    font-weight: 600;
+    letter-spacing: 0.04em;
+  }
+
+  .member-desc {
+    font-size: 0.8rem;
+    color: var(--color-text-secondary);
+    line-height: 1.4;
+    margin-top: 0.15rem;
+  }
+
+  .team-footer {
+    font-size: 0.75rem;
+    color: var(--color-text-secondary);
+    text-align: center;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .team-link {
+    color: var(--accent-cyan);
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  .team-link:hover {
+    text-decoration: underline;
+  }
+
+  .font-mono {
+    font-family: 'Space Grotesk', monospace;
+  }
+</style>

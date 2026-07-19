@@ -1,0 +1,215 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import VisionSection from '../components/VisionSection.astro';
+import Goals from '../components/Goals.astro';
+import MissionCard from '../components/MissionCard.astro';
+import Obc from '../components/Obc.astro';
+import Timeline from '../components/Timeline.astro';
+import Subsystems from '../components/Subsystems.astro';
+import Team from '../components/Team.astro';
+import Sponsors from '../components/Sponsors.astro';
+import Footer from '../components/Footer.astro';
+
+const cassiopeiaMilestones = [
+  { name: "Power board finished", status: "done" as const },
+  { name: "Sensor board finished", status: "done" as const },
+  { name: "Main OBC in development", status: "working" as const },
+  { name: "Ground testing", status: "working" as const },
+  { name: "Fuselage & recovery integration", status: "todo" as const }
+];
+---
+
+<Layout>
+  <!-- Header Section -->
+  <Header />
+
+  <!-- Vision — Why We Build Everything Ourselves -->
+  <VisionSection />
+
+  <!-- Goals — full width, above main columns -->
+  <Goals />
+
+  <!-- Main Content Grid -->
+  <main class="content-grid">
+    <div class="primary-column">
+      <!-- Active Missions -->
+      <section class="section-wrapper">
+        <div class="column-header font-mono">ACTIVE PROJECTS</div>
+        <MissionCard 
+          name="Cassiopeia I"
+          status="Active Development"
+          progress={35}
+          targetApogee="250 m"
+          launchSite="Třebíč, Czech Republic"
+          milestones={cassiopeiaMilestones}
+        />
+      </section>
+
+      <!-- Onboard Computer -->
+      <section class="section-wrapper">
+        <Obc />
+      </section>
+
+      <!-- Technical Subsystems -->
+      <section class="section-wrapper">
+        <Subsystems />
+      </section>
+    </div>
+
+    <div class="secondary-column">
+      <!-- Logs & Updates -->
+      <Timeline />
+    </div>
+  </main>
+
+  <!-- Team -->
+  <Team />
+
+  <!-- Sponsors -->
+  <Sponsors />
+
+  <!-- Join Us -->
+  <section class="join-section glass-panel">
+    <div class="join-inner">
+      <span class="join-badge font-mono">WE ARE HIRING</span>
+      <h2 class="join-heading">Join Us</h2>
+      <p class="join-text">Interested in electronics, programming or space?</p>
+      <p class="join-note font-mono">No experience? We'll teach you. Everyone starts somewhere.</p>
+      <a href="join" class="join-button font-mono">
+        <span class="join-button-text">GET INVOLVED</span>
+        <span class="join-arrow">→</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- Footer Section -->
+  <Footer />
+</Layout>
+
+<style>
+  .content-grid {
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .primary-column {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .secondary-column {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .section-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .column-header {
+    font-size: 0.7rem;
+    color: var(--color-text-muted);
+    letter-spacing: 0.1em;
+    font-weight: 600;
+  }
+
+  .font-mono {
+    font-family: 'Space Grotesk', monospace;
+  }
+
+  .join-section {
+    padding: 2rem;
+    margin-bottom: 2rem;
+    background: rgba(8, 12, 24, 0.7);
+    border-color: rgba(6, 182, 212, 0.15);
+    text-align: center;
+  }
+
+  .join-section:hover {
+    border-color: rgba(6, 182, 212, 0.4);
+    box-shadow: 0 8px 32px rgba(6, 182, 212, 0.1);
+  }
+
+  .join-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .join-badge {
+    font-size: 0.65rem;
+    color: var(--accent-emerald);
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    padding: 0.2rem 0.5rem;
+    border: 1px solid rgba(16, 185, 129, 0.3);
+    border-radius: 4px;
+    background: rgba(16, 185, 129, 0.08);
+  }
+
+  .join-heading {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #ffffff;
+    text-shadow: 0 0 10px rgba(6, 182, 212, 0.5);
+  }
+
+  .join-text {
+    font-size: 1rem;
+    color: var(--color-text-secondary);
+  }
+
+  .join-note {
+    font-size: 0.75rem;
+    color: var(--accent-emerald);
+    background: rgba(16, 185, 129, 0.06);
+    border: 1px solid rgba(16, 185, 129, 0.15);
+    padding: 0.4rem 0.9rem;
+    border-radius: 4px;
+  }
+
+  .join-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+    padding: 0.7rem 1.5rem;
+    background: rgba(6, 182, 212, 0.1);
+    border: 1px solid rgba(6, 182, 212, 0.3);
+    border-radius: 6px;
+    color: var(--accent-cyan);
+    text-decoration: none;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    transition: all 0.2s ease;
+  }
+
+  .join-button:hover {
+    background: rgba(6, 182, 212, 0.2);
+    border-color: var(--accent-cyan);
+    box-shadow: 0 0 15px rgba(6, 182, 212, 0.15);
+  }
+
+  .join-arrow {
+    transition: transform 0.2s ease;
+  }
+
+  .join-button:hover .join-arrow {
+    transform: translateX(4px);
+  }
+
+  @media (max-width: 820px) {
+    .content-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

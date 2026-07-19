@@ -1,0 +1,491 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Join Us | Mellotech">
+  <main class="join-page">
+    <div class="join-card glass-panel">
+      <div class="join-glow-bar"></div>
+
+      <div class="join-header">
+        <span class="join-tag font-mono">RECRUITMENT</span>
+        <h1 class="join-title">Join Us</h1>
+        <p class="join-lead">
+          Interested in electronics, programming or space?
+        </p>
+        <p class="join-cta">Fill in the form and we'll get back to you.</p>
+      </div>
+
+      <form id="join-form" class="join-form" action="https://formspree.io/f/meeyaqad" method="POST" onsubmit="return handleSubmit(event)">
+        <div class="form-group">
+          <label class="form-label font-mono" for="name">NAME *</label>
+          <input type="text" id="name" name="name" class="form-input" placeholder="Your name" required />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label font-mono" for="email">EMAIL *</label>
+          <input type="email" id="email" name="email" class="form-input" placeholder="your@email.com" required />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label font-mono" for="education">EDUCATION *</label>
+          <select id="education" name="education" class="form-input form-select" required>
+            <option value="" disabled selected>Select your level</option>
+            <option value="zakladni">Základní škola</option>
+            <option value="stredni">Střední škola</option>
+            <option value="vysoka">Vysoká škola</option>
+            <option value="jine">Jiné</option>
+          </select>
+        </div>
+
+        <fieldset class="form-fieldset">
+          <legend class="form-legend font-mono">NEJVÍC MĚ BAVÍ</legend>
+          <div class="checkbox-grid">
+            <label class="checkbox-item"><input type="checkbox" name="interests" value="programming" /> Programování</label>
+            <label class="checkbox-item"><input type="checkbox" name="interests" value="game-dev" /> Dělání her</label>
+            <label class="checkbox-item"><input type="checkbox" name="interests" value="electronics" /> Elektronika obecně</label>
+            <label class="checkbox-item"><input type="checkbox" name="interests" value="arduino" /> Arduino</label>
+            <label class="checkbox-item"><input type="checkbox" name="interests" value="raspberry" /> Raspberry Pi</label>
+            <label class="checkbox-item"><input type="checkbox" name="interests" value="3d-print" /> 3D tisk</label>
+            <label class="checkbox-item"><input type="checkbox" name="interests" value="cad" /> CAD modelování</label>
+            <label class="checkbox-item"><input type="checkbox" name="interests" value="pcb" /> Návrh PCB</label>
+            <label class="checkbox-item"><input type="checkbox" name="interests" value="aviation" /> Letectví</label>
+            <label class="checkbox-item"><input type="checkbox" name="interests" value="rocketry" /> Raketová technika</label>
+            <label class="checkbox-item"><input type="checkbox" name="interests" value="robotics" /> Robotika</label>
+            <label class="checkbox-item"><input type="checkbox" name="interests" value="ai" /> Umělá inteligence</label>
+            <label class="checkbox-item"><input type="checkbox" name="interests" value="cybersecurity" /> Kybernetická bezpečnost</label>
+            <label class="checkbox-item"><input type="checkbox" name="interests" value="networks" /> Sítě a infrastruktura</label>
+            <label class="checkbox-item"><input type="checkbox" name="interests" value="web" /> Webový vývoj</label>
+            <label class="checkbox-item"><input type="checkbox" name="interests" value="mobile" /> Mobilní aplikace</label>
+            <label class="checkbox-item"><input type="checkbox" name="interests" value="embedded" /> Embedded systémy</label>
+            <label class="checkbox-item"><input type="checkbox" name="interests" value="linux" /> Linux / OSS</label>
+            <label class="checkbox-item"><input type="checkbox" name="interests" value="physics" /> Fyzika</label>
+            <label class="checkbox-item"><input type="checkbox" name="interests" value="math" /> Matematika</label>
+          </div>
+        </fieldset>
+
+        <fieldset class="form-fieldset">
+          <legend class="form-legend font-mono">UMÍM DĚLAT</legend>
+          <div class="checkbox-grid">
+            <label class="checkbox-item"><input type="checkbox" name="skills" value="kicad" /> KiCad</label>
+            <label class="checkbox-item"><input type="checkbox" name="skills" value="blender" /> Blender</label>
+            <label class="checkbox-item"><input type="checkbox" name="skills" value="shapr3d" /> Shapr3D</label>
+            <label class="checkbox-item"><input type="checkbox" name="skills" value="unity" /> Unity</label>
+            <label class="checkbox-item"><input type="checkbox" name="skills" value="linux" /> Linux</label>
+            <label class="checkbox-item"><input type="checkbox" name="skills" value="cpp" /> C / C++</label>
+            <label class="checkbox-item"><input type="checkbox" name="skills" value="python" /> Python</label>
+            <label class="checkbox-item"><input type="checkbox" name="skills" value="javascript" /> JavaScript</label>
+            <label class="checkbox-item"><input type="checkbox" name="skills" value="html-css" /> HTML / CSS</label>
+            <label class="checkbox-item"><input type="checkbox" name="skills" value="freecad" /> FreeCAD</label>
+            <label class="checkbox-item"><input type="checkbox" name="skills" value="solidworks" /> SolidWorks</label>
+            <label class="checkbox-item"><input type="checkbox" name="skills" value="fusion360" /> Fusion 360</label>
+            <label class="checkbox-item"><input type="checkbox" name="skills" value="matlab" /> MATLAB</label>
+            <label class="checkbox-item"><input type="checkbox" name="skills" value="altium" /> Altium</label>
+            <label class="checkbox-item"><input type="checkbox" name="skills" value="git" /> Git</label>
+            <label class="checkbox-item"><input type="checkbox" name="skills" value="docker" /> Docker</label>
+            <label class="checkbox-item"><input type="checkbox" name="skills" value="react" /> React</label>
+            <label class="checkbox-item"><input type="checkbox" name="skills" value="nodejs" /> Node.js</label>
+            <label class="checkbox-item"><input type="checkbox" name="skills" value="latex" /> LaTeX</label>
+            <label class="checkbox-item"><input type="checkbox" name="skills" value="openscad" /> OpenSCAD</label>
+          </div>
+        </fieldset>
+
+        <div class="form-group">
+          <label class="form-label font-mono" for="special">SPECIAL SKILLS</label>
+          <input type="text" id="special" name="special" class="form-input" placeholder="Něco čím se lišíš..." />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label font-mono" for="contribute">DO TÝMU BYCH MOHL PŘINÉST</label>
+          <textarea id="contribute" name="contribute" class="form-input form-textarea" placeholder="Čím bys mohl být užitečný? Např. organizace, grafika, web, testování, psaní dokumentace..." rows="3"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label font-mono" for="message">ŘEKNÍ NÁM O SOBĚ</label>
+          <textarea id="message" name="message" class="form-input form-textarea" placeholder="Cokoliv dalšího co bys chtěl sdílet — tvoje zkušenosti, nápady, proč se chceš přidat..." rows="4"></textarea>
+        </div>
+
+        <button type="submit" class="form-submit font-mono">
+          <span class="submit-text">SEND</span>
+          <span class="submit-arrow">→</span>
+        </button>
+      </form>
+
+      <div id="form-success" class="form-success" style="display:none">
+        <span class="success-icon">✓</span>
+        <p class="success-text">Thanks for reaching out!</p>
+        <p class="success-hint font-mono">We'll get back to you as soon as possible.</p>
+      </div>
+
+      <div class="join-contact-info">
+        <span class="contacts-label font-mono">OR CONTACT US DIRECTLY</span>
+
+        <div class="contact-item">
+          <span class="contact-role font-mono">MAIN LEADER</span>
+          <span class="contact-name">Bedřich Březina</span>
+          <a href="mailto:bedrich.brezina09@gmail.com" class="contact-email">bedrich.brezina09@gmail.com</a>
+        </div>
+
+        <div class="contact-item">
+          <span class="contact-role font-mono">SOFTWARE</span>
+          <span class="contact-name">Šimon Balog</span>
+          <a href="mailto:simonbalog11@seznam.cz" class="contact-email">simonbalog11@seznam.cz</a>
+        </div>
+      </div>
+
+      <div class="join-footer font-mono">
+        Also find us on Discord: NTPgKwrTaH
+      </div>
+    </div>
+  </main>
+</Layout>
+
+<script>
+  function handleSubmit(event) {
+    event.preventDefault();
+    const form = document.getElementById('join-form');
+    const formData = new FormData(form);
+
+    fetch(form.action, {
+      method: 'POST',
+      body: formData,
+      headers: { 'Accept': 'application/json' }
+    }).then(response => {
+      if (response.ok) {
+        form.style.display = 'none';
+        document.getElementById('form-success').style.display = 'flex';
+      } else {
+        alert('Something went wrong. Try emailing us directly.');
+      }
+    }).catch(() => {
+      alert('Something went wrong. Try emailing us directly.');
+    });
+
+    return false;
+  }
+</script>
+
+<style>
+  .join-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 4rem);
+    padding: 2rem 0;
+  }
+
+  .join-card {
+    max-width: 600px;
+    width: 100%;
+    padding: 2.5rem;
+    background: rgba(8, 12, 24, 0.85);
+    border-color: rgba(6, 182, 212, 0.2);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .join-card:hover {
+    border-color: rgba(6, 182, 212, 0.4);
+    box-shadow: 0 8px 32px rgba(6, 182, 212, 0.1);
+  }
+
+  .join-glow-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(to right, transparent, #06b6d4, #8b5cf6, transparent);
+  }
+
+  .join-header {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .join-tag {
+    font-size: 0.65rem;
+    color: var(--accent-cyan);
+    font-weight: 600;
+    letter-spacing: 0.08em;
+  }
+
+  .join-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #ffffff;
+    text-shadow: 0 0 10px rgba(6, 182, 212, 0.5);
+  }
+
+  .join-lead {
+    font-size: 1.1rem;
+    color: var(--color-text-primary);
+    margin-top: 0.5rem;
+  }
+
+  .join-cta {
+    font-size: 0.95rem;
+    color: var(--accent-cyan);
+    font-weight: 600;
+  }
+
+  .join-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .form-label {
+    font-size: 0.65rem;
+    color: var(--accent-cyan);
+    font-weight: 600;
+    letter-spacing: 0.08em;
+  }
+
+  .form-input {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 0.9rem;
+    padding: 0.7rem 0.85rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 6px;
+    color: #ffffff;
+    outline: none;
+    transition: border-color 0.2s ease;
+  }
+
+  .form-input::placeholder {
+    color: var(--color-text-muted);
+  }
+
+  .form-input:focus {
+    border-color: var(--accent-cyan);
+    box-shadow: 0 0 10px rgba(6, 182, 212, 0.1);
+  }
+
+  .form-select {
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%2306b6d4' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.85rem center;
+    padding-right: 2.5rem;
+  }
+
+  .form-select option {
+    background: #0d1327;
+    color: #ffffff;
+  }
+
+  .form-textarea {
+    resize: vertical;
+    min-height: 80px;
+    line-height: 1.5;
+  }
+
+  .form-fieldset {
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .form-legend {
+    font-size: 0.65rem;
+    color: var(--accent-cyan);
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    padding: 0 0.4rem;
+  }
+
+  .checkbox-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+    gap: 0.4rem;
+  }
+
+  .checkbox-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.82rem;
+    color: var(--color-text-secondary);
+    cursor: pointer;
+    padding: 0.3rem 0.4rem;
+    border-radius: 4px;
+    transition: background 0.15s ease;
+  }
+
+  .checkbox-item:hover {
+    background: rgba(6, 182, 212, 0.05);
+    color: #ffffff;
+  }
+
+  .checkbox-item input[type="checkbox"] {
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 3px;
+    background: transparent;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: all 0.15s ease;
+  }
+
+  .checkbox-item input[type="checkbox"]:checked {
+    background: var(--accent-cyan);
+    border-color: var(--accent-cyan);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='white'%3E%3Cpath d='M20 6L9 17l-5-5' stroke='white' stroke-width='3' fill='none'/%3E%3C/svg%3E");
+    background-size: 10px;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  .form-submit {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1.5rem;
+    background: rgba(6, 182, 212, 0.1);
+    border: 1px solid rgba(6, 182, 212, 0.3);
+    border-radius: 6px;
+    color: var(--accent-cyan);
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin-top: 0.5rem;
+  }
+
+  .form-submit:hover {
+    background: rgba(6, 182, 212, 0.2);
+    border-color: var(--accent-cyan);
+    box-shadow: 0 0 15px rgba(6, 182, 212, 0.15);
+  }
+
+  .submit-arrow {
+    transition: transform 0.2s ease;
+  }
+
+  .form-submit:hover .submit-arrow {
+    transform: translateX(4px);
+  }
+
+  .form-success {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1.5rem;
+    background: rgba(16, 185, 129, 0.08);
+    border: 1px solid rgba(16, 185, 129, 0.25);
+    border-radius: 8px;
+    text-align: center;
+  }
+
+  .success-icon {
+    font-size: 2rem;
+    color: var(--accent-emerald);
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(16, 185, 129, 0.1);
+    border-radius: 50%;
+  }
+
+  .success-text {
+    font-size: 1.1rem;
+    color: #ffffff;
+    font-weight: 600;
+  }
+
+  .success-hint {
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+  }
+
+  .join-contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .contacts-label {
+    font-size: 0.65rem;
+    color: var(--accent-cyan);
+    font-weight: 600;
+    letter-spacing: 0.08em;
+  }
+
+  .contact-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    padding: 0.85rem;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 6px;
+  }
+
+  .contact-item:hover {
+    border-color: rgba(6, 182, 212, 0.2);
+  }
+
+  .contact-role {
+    font-size: 0.6rem;
+    color: var(--accent-cyan);
+    font-weight: 600;
+    letter-spacing: 0.05em;
+  }
+
+  .contact-name {
+    font-size: 0.95rem;
+    color: #ffffff;
+    font-weight: 600;
+  }
+
+  .contact-email {
+    font-size: 0.8rem;
+    color: var(--color-text-secondary);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .contact-email:hover {
+    color: var(--accent-cyan);
+  }
+
+  .join-footer {
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+    text-align: center;
+    padding-top: 0.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .font-mono {
+    font-family: 'Space Grotesk', monospace;
+  }
+
+  @media (max-width: 480px) {
+    .checkbox-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

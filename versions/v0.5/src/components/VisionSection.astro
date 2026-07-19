@@ -1,0 +1,91 @@
+<div class="vision-container glass-panel">
+  <div class="vision-glow-bar"></div>
+  <div class="vision-content">
+    <span class="vision-tag font-mono">OUR APPROACH</span>
+    <h2 class="vision-title">Why We Build Everything Ourselves</h2>
+
+    <p class="vision-text">
+      Most student rocket teams buy their flight computer. It's the pragmatic choice — a
+      commercial altimeter or off-the-shelf autopilot gets you flying faster, with less risk.
+      We chose the harder path instead.
+    </p>
+
+    <p class="vision-text">
+      Every subsystem on this site — the power board, the sensor board, the OBC — is designed
+      from scratch, in-house, by students, from schematic capture to PCB layout to firmware.
+      Not because it's the fastest way to fly a rocket. Because it's the only way to actually
+      <em>own</em> the engineering.
+    </p>
+
+    <p class="vision-text">
+      A purchased flight computer answers one flight. A flight computer we design ourselves
+      becomes a foundation — every lesson learned on Cassiopeia I's power architecture carries
+      directly into Cassiopeia II. Every sensor fusion algorithm we tune this year is one we
+      don't have to re-derive next year. That's the bet behind this team: that the compounding
+      value of owned, reusable engineering knowledge outgrows the head start of buying it off a shelf.
+    </p>
+
+    <p class="vision-text">
+      It also means every member who joins isn't operating a black box — they're extending one
+      they can actually read, modify, and understand down to the register level.
+    </p>
+  </div>
+</div>
+
+<style>
+  .vision-container {
+    padding: 2rem;
+    margin-bottom: 2rem;
+    background: rgba(8, 12, 24, 0.7);
+    border-color: rgba(139, 92, 246, 0.15);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .vision-container:hover {
+    border-color: rgba(139, 92, 246, 0.35);
+    box-shadow: 0 8px 32px rgba(139, 92, 246, 0.08);
+  }
+
+  .vision-glow-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(to right, transparent, #8b5cf6, #06b6d4, transparent);
+  }
+
+  .vision-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .vision-tag {
+    font-size: 0.65rem;
+    color: #a78bfa;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+  }
+
+  .vision-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #ffffff;
+    text-shadow: 0 0 10px rgba(139, 92, 246, 0.3);
+  }
+
+  .vision-text {
+    font-size: 0.88rem;
+    color: var(--color-text-secondary);
+    line-height: 1.7;
+    max-width: 720px;
+  }
+
+  .vision-text em {
+    color: #ffffff;
+    font-style: normal;
+    font-weight: 500;
+  }
+</style>
