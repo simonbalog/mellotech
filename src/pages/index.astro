@@ -24,6 +24,11 @@ const cassiopeiaMilestones = [
   <!-- Header Section -->
   <Header />
 
+  <!-- Small Logo -->
+  <div class="small-logo-wrap">
+    <img src="/mellotech/small_logo.svg" alt="M" class="small-logo" />
+  </div>
+
   <!-- Vision — Why We Build Everything Ourselves -->
   <VisionSection />
 
@@ -205,6 +210,18 @@ const cassiopeiaMilestones = [
 
   .join-button:hover .join-arrow {
     transform: translateX(4px);
+  }
+
+  .small-logo-wrap {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+  }
+
+  .small-logo {
+    height: 4rem;
+    width: auto;
+    opacity: 0.7;
   }
 
   @media (max-width: 820px) {
